@@ -34,4 +34,5 @@ EXPOSE 9000
 CMD ["php-fpm"]
 ```
 
-### [MIT License](LICENSE)
+## License
+License under [MIT](LICENSE)
