@@ -9,6 +9,7 @@ jobs:
     name: Publish Image
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Build, tag and push image to GitHub Packages
       uses: craftech-io/package-action@v3.1.0
       with:
@@ -16,5 +17,5 @@ jobs:
         tags: |
           latest
           ${{ github.event.release.tag_name }}
-        dockerfile: ../Dockerfile
+        dockerfile: Dockerfile
         access_token: ${{ secrets.ACCESS_TOKEN }}
