@@ -6,13 +6,12 @@ on:
 
 jobs:
   docker:
-    name: Build, tag and push image to GitHub Packages
+    name: GitHub Packages
     runs-on: ubuntu-latest
     steps:
-    - name: Docker Package Registry
+    - name: Build, tag and push image to GitHub Packages
       uses: craftech-io/package-action@v3.1.0
       with:
-        dockerfile: Dockerfile
         tags: |
           latest
           ${{ github.event.release.tag_name }}
