@@ -15,6 +15,7 @@ RUN apt-get clean && \
         build-essential \
         libpng-dev \
         libsodium-dev \
+        libgmp-dev \
         libjpeg62-turbo-dev \
         libfreetype6-dev \
         zip libzip-dev \
@@ -28,16 +29,13 @@ RUN apt-get clean && \
 
 RUN docker-php-ext-install iconv pdo_mysql mbstring zip exif pcntl exif bcmath
 RUN docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
-RUN docker-php-ext-install gd sodium
+RUN docker-php-ext-configure gmp
+RUN docker-php-ext-install gd sodium gmp
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-WORKDIR /var/www
-
 RUN groupadd -g 1000 www && \
     useradd -u 1000 -ms /bin/bash -g www www
-
-USER www
 
 EXPOSE 9000
 CMD ["php-fpm"]
