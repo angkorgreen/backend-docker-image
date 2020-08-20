@@ -15,7 +15,7 @@ jobs:
       with:
         image_name: backend-docker-image
         tags: |
-          latest
           ${{ github.event.release.tag_name }}
+          latest
         dockerfile: Dockerfile
         access_token: ${{ secrets.ACCESS_TOKEN }}
