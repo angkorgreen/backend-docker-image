@@ -16,5 +16,5 @@ jobs:
         tags: |
           latest
           ${{ github.event.release.tag_name }}
-        dockerfile: Dockerfile
+        dockerfile: ../Dockerfile
         access_token: ${{ secrets.ACCESS_TOKEN }}
